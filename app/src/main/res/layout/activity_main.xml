@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffc2"
     tools:context="com.example.raman.lab2.MainActivity">
 
     <TableLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp">
+        tools:layout_editor_absoluteY="18dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -45,6 +46,8 @@
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:onClick="onClick"
                 android:text="@string/input_value" />
         </TableRow>
 
