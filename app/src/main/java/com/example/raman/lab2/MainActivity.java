@@ -1,6 +1,8 @@
 package com.example.raman.lab2;
 
+import android.content.Context;
 import android.net.ParseException;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
+        tvInfo.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorText));
         if (!isEnded) {
             try {
                 int estimatedNumber = Integer.parseInt(etInput.getText().toString());
@@ -45,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     tvInfo.setText(getResources().getString(R.string.bounds_error));
+                    tvInfo.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorError));
                 }
+
             }
             catch (ParseException e) {
                 tvInfo.setText(getResources().getString(R.string.parse_error));
+                tvInfo.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorError));
             }
         }
         else {
@@ -56,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             unknownNumber = (int)(Math.random() * 99) + 1;
             etInput.setEnabled(true);
             bControl.setText(getResources().getString(R.string.input_value));
+            tvInfo.setText(getResources().getString(R.string.try_to_guess));
         }
+        etInput.setText("");
     }
 }
