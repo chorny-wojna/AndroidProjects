@@ -7,6 +7,7 @@
     <string name="input_value">Input value</string>
     <string name="play_more">Play more</string>
     <string name="try_to_guess">Try to guess number (1 &#8211; 100) </string>
-    <string name="error">Incorrect input!</string>
+    <string name="parse_error">Incorrect input! Enter a number.</string>
+    <string name="bounds_error">Incorrect input! Enter a whole number between 1 and 100.</string>
 
 </resources>

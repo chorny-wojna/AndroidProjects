@@ -7,6 +7,7 @@
     <string name="input_value">Ввести значение</string>
     <string name="play_more">Сыграть ещё</string>
     <string name="try_to_guess">Попробуйте угадать число (1 &#8211; 100) </string>
-    <string name="error">Неправильный ввод!</string>
+    <string name="parse_error">Неверный ввод! Введите число.</string>
+    <string name="bounds_error">Неверный ввод! Введите целое число от 1 до 100. </string>
 
 </resources>

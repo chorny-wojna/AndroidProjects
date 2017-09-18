@@ -1,5 +1,6 @@
 package com.example.raman.lab2;
 
+import android.net.ParseException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,21 +28,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         if (!isEnded) {
-            int estimatedNumber = Integer.parseInt(etInput.getText().toString());
-            if (estimatedNumber == unknownNumber) {
-                isEnded = true;
-                etInput.setEnabled(false);
-                bControl.setText(getResources().getString(R.string.play_more));
-                tvInfo.setText(getResources().getString(R.string.hit));
+            try {
+                int estimatedNumber = Integer.parseInt(etInput.getText().toString());
+
+                if (estimatedNumber == unknownNumber) {
+                    isEnded = true;
+                    etInput.setEnabled(false);
+                    bControl.setText(getResources().getString(R.string.play_more));
+                    tvInfo.setText(getResources().getString(R.string.hit));
+                }
+                else if (estimatedNumber < unknownNumber && estimatedNumber > 0) {
+                    tvInfo.setText(getResources().getString(R.string.behind));
+                }
+                else if (estimatedNumber > unknownNumber && estimatedNumber <= 100) {
+                    tvInfo.setText(getResources().getString(R.string.ahead));
+                }
+                else {
+                    tvInfo.setText(getResources().getString(R.string.bounds_error));
+                }
             }
-            else if (estimatedNumber < unknownNumber && estimatedNumber > 0) {
-                tvInfo.setText(getResources().getString(R.string.behind));
-            }
-            else if (estimatedNumber > unknownNumber && estimatedNumber <= 100) {
-                tvInfo.setText(getResources().getString(R.string.ahead));
-            }
-            else {
-                tvInfo.setText(getResources().getString(R.string.error));
+            catch (ParseException e) {
+                tvInfo.setText(getResources().getString(R.string.parse_error));
             }
         }
         else {
