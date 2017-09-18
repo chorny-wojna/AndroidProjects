@@ -6,7 +6,7 @@
     <string name="hit">Hit!</string>
     <string name="input_value">Input value</string>
     <string name="play_more">Play more</string>
-    <string name="try_to_guess">Try ro guess number (1 &#8211; 100) </string>
+    <string name="try_to_guess">Try to guess number (1 &#8211; 100) </string>
     <string name="error">Incorrect input!</string>
 
 </resources>
