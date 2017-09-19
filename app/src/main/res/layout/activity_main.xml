@@ -10,8 +10,41 @@
     <TableLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="18dp">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/interval" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="202dp"
+                android:layout_height="30dp"
+                android:clickable="true"
+                android:max="500"
+                android:progress="100"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="180dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -50,6 +83,23 @@
                 android:backgroundTint="@android:color/holo_red_light"
                 android:onClick="onClick"
                 android:text="@string/input_value" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="88dp"
+                android:layout_height="48dp"
+                android:onClick="onExitClick"
+                android:text="X"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="309dp" />
         </TableRow>
 
     </TableLayout>

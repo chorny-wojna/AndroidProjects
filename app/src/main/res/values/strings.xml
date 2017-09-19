@@ -6,9 +6,10 @@
     <string name="hit">Пападанне!</string>
     <string name="input_value">Увесці значэнне</string>
     <string name="play_more">Згуляць яшчэ</string>
-    <string name="try_to_guess">Паспрабуйце адгадаць лік (1 &#8211; 100) </string>
-    <string name="parse_error">Няправільны увод! Увядзіце лік.</string>
-    <string name="bounds_error">Няправільны увод! Увядзіце цэлы лік ад 1 да 100. </string>
+    <string name="try_to_guess">Паспрабуйце адгадаць лік (1 &#8211; </string>
+    <string name="parse_error">Увядзіце лік.</string>
+    <string name="bounds_error">Увядзіце цэлы лік ад 1 да </string>
     <string name="your_value">Увесці значэнне</string>
+    <string name="interval">Выбярыце максімальнае значэнне</string>
 
 </resources>

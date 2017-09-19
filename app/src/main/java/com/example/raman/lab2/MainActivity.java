@@ -10,8 +10,10 @@ import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
 
+    SeekBar sbInterval;
     TextView tvInfo;
     EditText etInput;
+    TextView tvLengthEdit;
     Button bControl;
     int unknownNumber;
     boolean isEnded;
@@ -22,16 +24,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tvInfo = (TextView)findViewById(R.id.textViewInfo);
+        tvLengthEdit = (TextView) findViewById(R.id.textView2);
         etInput = (EditText)findViewById(R.id.editText);
         bControl = (Button)findViewById(R.id.button);
-        unknownNumber = (int)(Math.random() * 99) + 1;
+        sbInterval = (SeekBar)findViewById(R.id.seekBar);
+        sbInterval.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                tvLengthEdit.setText(Integer.toString(progress + 10));
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                if (sbInterval.isEnabled()) {
+                    tvInfo.setText(getResources().getString(R.string.try_to_guess) +
+                            (sbInterval.getProgress() + 10) + ")");
+                }
+                sbInterval.setEnabled(false);
+            }
+        });
+
+        unknownNumber = (int)(Math.random() * ((sbInterval.getProgress() + 10) - 1)) + 1;
         isEnded = false;
     }
 
     public void onClick(View v) {
         tvInfo.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorText));
         if (!isEnded) {
-            try {
+            if (etInput.getText().toString().length() == 0) {
+                tvInfo.setText(getResources().getString(R.string.parse_error));
+                tvInfo.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorError));
+            }
+            else {
                 int estimatedNumber = Integer.parseInt(etInput.getText().toString());
 
                 if (estimatedNumber == unknownNumber) {
@@ -43,27 +68,30 @@ public class MainActivity extends AppCompatActivity {
                 else if (estimatedNumber < unknownNumber && estimatedNumber > 0) {
                     tvInfo.setText(getResources().getString(R.string.behind));
                 }
-                else if (estimatedNumber > unknownNumber && estimatedNumber <= 100) {
+                else if (estimatedNumber > unknownNumber &&
+                        estimatedNumber <= (sbInterval.getProgress() + 10)) {
                     tvInfo.setText(getResources().getString(R.string.ahead));
                 }
                 else {
-                    tvInfo.setText(getResources().getString(R.string.bounds_error));
+                    tvInfo.setText(getResources().getString(R.string.bounds_error) +
+                            (sbInterval.getProgress() + 10));
                     tvInfo.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorError));
                 }
-
-            }
-            catch (ParseException e) {
-                tvInfo.setText(getResources().getString(R.string.parse_error));
-                tvInfo.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorError));
             }
         }
         else {
             isEnded = false;
-            unknownNumber = (int)(Math.random() * 99) + 1;
+            unknownNumber = (int)(Math.random() * (sbInterval.getProgress() + 10)) + 1;
             etInput.setEnabled(true);
             bControl.setText(getResources().getString(R.string.input_value));
-            tvInfo.setText(getResources().getString(R.string.try_to_guess));
+            tvInfo.setText(getResources().getString(R.string.try_to_guess) + (sbInterval.getProgress() + 10) + ")");
+            sbInterval.setEnabled(true);
         }
         etInput.setText("");
+    }
+
+    public void onExitClick(View v) {
+        finish();
+        System.exit(0);
     }
 }
