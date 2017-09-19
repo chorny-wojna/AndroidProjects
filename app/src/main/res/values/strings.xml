@@ -9,5 +9,6 @@
     <string name="try_to_guess">Паспрабуйце адгадаць лік (1 &#8211; 100) </string>
     <string name="parse_error">Няправільны увод! Увядзіце лік.</string>
     <string name="bounds_error">Няправільны увод! Увядзіце цэлы лік ад 1 да 100. </string>
+    <string name="your_value">Увесці значэнне</string>
 
 </resources>
